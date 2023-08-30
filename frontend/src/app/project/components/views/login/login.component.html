@@ -1,0 +1,52 @@
+<section>
+    <h1>Mirror Cup</h1>
+
+<!-- 
+    DEFAULT STATE 
+-->
+<ng-container *ngIf="this.pageState.default || this.pageState.loading">
+    <div class="session-card" *ngIf="this.clan"> <!-- (existing clan) -->
+        <p>{{this.clan}}</p>
+        <i class="fa-regular fa-circle-check"></i>
+    </div>
+    <button class="main_action_button" *ngIf="!this.clan" (click)="this.pageState.updateState()"> <!-- (not clan) -->
+        Ya tengo clan
+    </button>
+
+    <!-- ENTER ACTION -->
+    <div class="action_box default" *ngIf="this.pageState.default">
+        <p>Apoya a tu equipo hasta la victoria!!</p>
+        <button class="button_blue" (click)="this.login()">entrar</button>
+    </div>
+    <div class="action_box loading" *ngIf="this.pageState.loading">
+        <h3>Entrando...</h3>
+        <div class="loading-bar">
+            <div class="loading-content" [ngClass]="{loading:this.loadingBar == 'loading', loaded:this.loadingBar == 'loaded', 'loading-content':true}"></div>
+        </div>
+    </div>
+    
+    <!-- END ENTER ACTION -->
+</ng-container>
+
+<!-- 
+    UPDATE STATE 
+-->
+<ng-container *ngIf="this.pageState.update">
+    <div class="form">
+        <p class="appointment">Pídele a tu representante los datos!!</p>
+    
+        <div class="inputBox">
+            <p>Usuario</p>
+            <input name="user" #user/>
+        </div>
+        <div class="inputBox">
+            <p>Contraseña</p>
+            <input name="password" #password/>
+        </div>
+        <div class="error hide" #login_error></div>
+        <button type="button" class="login-button main_action_button" #login_button (click)="this.getTeam(login_button, login_error, user.value, password.value)">Guardar</button>
+
+    </div>
+</ng-container>
+
+</section>

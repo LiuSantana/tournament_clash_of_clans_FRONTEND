@@ -1,0 +1,188 @@
+<section id="bodySection">
+    <div id="header">
+        <h1>Tu equipo</h1>
+    </div>
+    <!-- 
+        LOADING STYLE 
+    -->
+    <div id="pageContent" class="loading" *ngIf="this.pageState.loading">
+        <div class="form first">
+            <div class="inputBox">
+                <div class="input"></div>
+            </div>
+            <div class="input_inline">
+                <div class="inputBox">
+                    <div class="input"></div>
+                </div>
+                <div class="inputBox">
+                    <div class="input small"></div>
+                </div>
+            </div>
+        </div>
+        <div class="line_spacer"></div>
+        <div class="form second">
+            <div class="inputBox" *ngFor="let i of [].constructor(10)">
+                <div class="input mid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        DEFAULT STYLE 
+    -->
+    <div id="pageContent default" *ngIf="this.pageState.default">
+    <p class="page_note">Podrás modificar estos datos en el futuro</p>
+        <div class="form first">
+            <div class="inputBox">
+                <p>Tag</p>
+                <input class="input" name="tag" placeholder="#000000" #tag (change)="this.clan.setTag(tag.value)"/>
+            </div>
+            <div class="input_inline">
+                <div class="inputBox">
+                    <p>Nombre</p>
+                    <input class="input" name="name" placeholder="Lleida Ponent" #name (change)="this.clan.setName(name.value)"/>
+                </div>
+                <div class="inputBox">
+                    <p>Abr.</p>
+                    <input class="input small" name="abr" placeholder="LPT" min="2" max="3" #short_name (change)="this.clan.setShortName(short_name.value)"/>
+                </div>
+            </div>
+            <div class="input_inline">
+                <div class="inputBox">
+                    <p>Usuario</p>
+                    <input class="input mid" name="user" placeholder="Lleida" #user (change)="this.clan.setUser(user.value)"/>
+                </div>
+                <div class="inputBox">
+                    <p>Contraseña</p>
+                    <input class="input mid" name="password" placeholder="*****" min="2" max="3" #password (change)="this.clan.setPassword(password.value)"/>
+                </div>
+            </div>
+        </div>
+        <div class="line_spacer"></div>
+        <div class="counter">
+            <h3>{{this.clan.players.length}}/10</h3>
+            <h4>miembros</h4>
+        </div>
+        <div class="form second" #playerList>
+            <div class="inputBox" *ngFor="let p of this.clan.players">
+                <div class="input mid deleteOption">
+                    <input placeholder="#000000" #playerInput (input)="p.setTag(playerInput.value)"/>
+                    <div class="delete" (click)="this.clan.removePlayer(p)"><i class="fa-solid fa-trash"></i></div>
+                </div>
+            </div>
+            <button class="addButton" type="button" *ngIf="this.clan.players.length < 10" (click)="this.clan.addPlayer()">+</button>
+        </div>
+        <div class="buttonsBox">
+            <div class="error hide" #errorContent></div>
+            <button class="main_action_button" (click)="this.register(errorContent, registerBtn)" #registerBtn>Inscribirme</button>
+        </div>
+        
+    </div>
+
+
+    <!-- 
+        REGISTER/MODIFICATE STYLE (update state)
+    -->
+    <div id="pageContent extra" *ngIf="this.pageState.update">
+            <div class="form first">
+                <div class="inputBox">
+                    <p>Tag</p>
+                    <p class="input noeditable" name="tag">{{clan.tag}}</p>
+                </div>
+                <div class="input_inline">
+                    <div class="inputBox">
+                        <p>Nombre</p>
+                        <input class="input" name="name" placeholder="Lleida Ponent" #name (change)="this.clan.setName(name.value)" value="{{clan.name}}"/>
+                    </div>
+                    <div class="inputBox">
+                        <p>Abr.</p>
+                        <input class="input small" name="abr" placeholder="LPT" min="2" max="3" #short_name (change)="this.clan.setShortName(short_name.value)" value="{{clan.shortName}}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="line_spacer"></div>
+            <div class="counter">
+                <h3>{{this.clan.getNotDeletedPlayers()}}/10</h3>
+                <h4>miembros</h4>
+            </div>
+            <div class="form second" #playerList>
+                <ng-container *ngFor="let p of this.clan.players">
+                    <div class="inputBox" *ngIf="!p.deleted">
+                        <div class="input mid deleteOption player">
+                            <div class="playerData" *ngIf="p.name">
+                                <p>{{p.name}}</p>
+                                <p class="tag">{{p.tag}}</p>
+                            </div>
+                            <input placeholder="#000000" #playerInput (input)="p.setTag(playerInput.value)" *ngIf="!p.name"/>
+                            <div class="delete" (click)="p.deletePlayer();"><i class="fa-solid fa-trash"></i></div>
+                        </div>
+                    </div>
+                </ng-container>
+                <button class="addButton extraOption" type="button" *ngIf="this.clan.players.length < 10" (click)="this.clan.addPlayer()">+</button>
+            </div>
+            <div class="buttonsBox">
+                <div class="error hide" #errorContent2></div>
+                <button class="main_action_button" #saveBtn (click)="this.modifyTeam(errorContent2, saveBtn)">Guardar</button>
+                <button class="delete_action_button" #deleteBtn (click)="deletePopup.classList.remove('hide')">eliminar</button>
+            </div>
+        </div>
+        <div class="popup-background hide" #deletePopup>
+            <div id="confirm-delete" class="popup">
+                <div class="popup-header">
+                    <button class="close" (click)="deletePopup.classList.add('hide')"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <p>Si continuas este proceso borraras la inscripción de tu equipo en el torneo. Podrás inscribir otro equipo.</p>
+                <button class="delete_action_button" #deleteBtn (click)="permanentDeleteClan(deletePopup)">continuar</button>
+            </div>
+        </div>
+
+    <!-- 
+        PREVIEW STYLE (preview state)
+    -->
+    <div id="pageContent extra" *ngIf="this.pageState.preview">
+        <div class="form first">
+            <div class="inputBox">
+                <p>Tag</p>
+                <p class="input noeditable" name="tag">{{clan.tag}}</p>
+            </div>
+            <div class="input_inline">
+                <div class="inputBox">
+                    <p>Nombre</p>
+                    <p class="input noeditable" name="name">{{clan.name}}</p>
+                </div>
+                <div class="inputBox">
+                    <p>Abr.</p>
+                    <p class="input small noeditable" name="short_name">{{clan.shortName}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="line_spacer"></div>
+        <div class="counter">
+            <h3>{{this.clan.players.length}}/10</h3>
+            <h4>miembros</h4>
+        </div>
+        <div class="form second" #playerList>
+            <ng-container *ngFor="let p of this.clan.players">
+                <div class="inputBox" *ngIf="!p.deleted">
+                    <div class="input mid deleteOption noEditable player">
+                        <div class="playerData" *ngIf="p.name">
+                            <p>{{p.name}}</p>
+                            <p class="tag">{{p.tag}}</p>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="buttonsBox"></div>
+    </div>
+
+    <!-- 
+        LOGIN STYLE (extra state)
+    -->
+    <div id="pageContent" class="extraState" *ngIf="this.pageState.extra">
+        <p>Las inscripciones estan cerradas.</p>
+        <p>Si ya tienes un equipo inscrito, pídele a tu representante los datos de acceso y accede a través del siguiente botón:</p>
+        <button class="main_action_button" (click)="this.router.navigate(['/login'])">Inicia sesión</button>
+    </div>
+</section>
+<app-navbar [pagination]="'myteam'"></app-navbar>

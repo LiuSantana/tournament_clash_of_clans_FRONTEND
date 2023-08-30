@@ -1,0 +1,181 @@
+section
+{
+    height: 100vh;
+    width: 100vw;
+    background: var(--color-main);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 0 6rem 0;
+}
+
+h1
+{
+    font-size: 3rem;
+    color: #FFFFFF;
+}
+
+/*******************
+       SESSION
+*******************/
+.session-card 
+{
+    width: 160px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 .5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+    border:none;
+    box-shadow: 1px 3px 6px #00000010;
+    background: #00000020;
+    border: 1px solid #dedede;
+}
+.session-card:hover{transform: scale(1.05);}
+.session-card > p
+{
+    color: #3d3d3d;
+    color:#f9f9f9;
+    font-size: .85rem;
+    width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.session-card > i { color:#7BC66E; }
+
+.main_action_button
+{
+    width: 150px;
+    height: 40px;
+    font-size: .9rem;
+}
+
+.action_box{height: 115px; margin-bottom: 1rem;}
+
+
+/*******************
+    ENTER ACTION
+*******************/
+.action_box 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* default */
+.default > p 
+{
+    font-family: 'Gloria Hallelujah', cursive;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+
+.button_blue
+{
+    height: 64px;
+    width: 180px;
+}
+
+/* loading */
+.loading h3
+{
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: white;
+    text-align: center;
+    margin-bottom: .5rem;
+}
+.loading-bar
+{
+    width: 220px;
+    border-radius: 34px;
+    height: 30px;
+    border:1px solid white;
+    background: var(--color-main-dark1);
+    box-shadow: 0 2px 4px #00000010;
+    padding: 0.2rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.loading-content
+{
+    height: 100%;
+    width: 10%;
+    border-radius: 100px;
+    background: var(--color-main-dark1);
+    background: var(--color-main);
+}
+.loading-content.loading {
+    width: 80%;
+    animation: loading 3s;
+}
+.loading-content.loaded{width: 100%;}
+@keyframes loading {
+    0% { width: 10%;}
+    15% { width: 20%;}
+    40% { width: 20%;}
+    75% { width: 67%;}
+    85% { width: 67%;}
+    100% { width:80%}
+}
+
+
+/*******************
+    LOGIN FORM
+*******************/
+.form
+{
+    height: 100%;
+    width: 80%;
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.appointment
+{
+    font-family: 'Gloria Hallelujah', cursive;
+    color: white;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+.inputBox {margin-bottom: 1rem;}
+.inputBox > p
+{
+    margin-bottom: .25rem;
+    text-transform: uppercase;
+    font-size: .85rem;
+}
+.inputBox input
+{
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #dedede60;
+    outline: none;
+    background: #FFFFFF15;
+    padding: 0 .5rem;
+    color: white;
+}
+.error
+{
+    margin-top: 1rem;
+    border: none !important;
+    background: #ff000080 !important;
+    color: white !important;
+}
+.login-button
+{
+    margin: 1rem 0 5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

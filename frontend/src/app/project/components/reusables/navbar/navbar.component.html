@@ -1,0 +1,22 @@
+<div id="refreshAlert" class="delete_action_button" *ngIf="this.refreshAlert" (click)="this.router.navigate(['/login'])">
+    <i class="fa-solid fa-arrows-rotate"></i>
+    <p>Actualizar datos</p>
+</div>
+
+<nav #nav>
+    <div class="show-hide-arrow" #arrow (click)="this.changeNavVisibility(nav, arrow)">
+        <i class="fa-solid fa-chevron-down"></i>
+    </div>
+    <div [ngClass]="{link: true, active: this.pagination == 'teams'}" (click)="this.router.navigate(['/teams']);">
+        <i class="fa-solid fa-shield"></i>
+        <p>clans</p>
+    </div>
+    <div [ngClass]="{link: true, active: this.pagination == 'myteam'}" (click)="this.router.navigate(['/myteam']);">
+        <i class="fa-solid fa-people-group"></i>
+        <p>mi equipo</p>
+    </div>
+    <div [ngClass]="{link: true, active: this.pagination == 'tournament'}" (click)="this.router.navigate(['/tournament']);">
+        <i class="fa-solid fa-trophy"></i>
+        <p>torneo</p>
+    </div>
+</nav>

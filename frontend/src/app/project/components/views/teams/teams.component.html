@@ -1,0 +1,21 @@
+<section id="bodySection">
+    <div id="header">
+        <h1>Equipos</h1>
+    </div>
+    <p class="page_note">Puedes ver los detalles de un equipo haciendo click en este</p>
+    <div class="teams-counter">
+        <h3>{{this.teams.length}}</h3>
+        <h5>EQUIPOS</h5>
+    </div>
+    <div id="clansBox" *ngIf="this.pageState.default">
+        <div class="clan" *ngFor="let t of this.teams" (click)="this.router.navigate(['/myteam'], { queryParams: { clan:t.tag } });">
+            <h3>{{t.short_name}}</h3>
+            <img src="assets/lleida.png" alt="Image">
+            <h4>{{t.name}}</h4>
+        </div>
+    </div>
+    <div *ngIf="this.pageState.update">
+        <p class="appointment">No hay ningún clan inscrito aún.</p>
+    </div>
+</section>
+<app-navbar [pagination]="'teams'"></app-navbar>

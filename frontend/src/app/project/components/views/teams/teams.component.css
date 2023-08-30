@@ -1,0 +1,100 @@
+.teams-counter
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.teams-counter > h3
+{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-main-dark1);
+}
+.teams-counter > h5
+{
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: var(--color-main-dark1);
+    text-transform: uppercase;
+    transform: translateY(-.2rem);
+}
+
+#clansBox
+{
+    width: 80%;
+    margin: 2.5rem auto 4rem auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+}
+
+@media screen and (min-width: 330px) {
+    #clansBox{grid-template-columns: repeat(2, 1fr);}
+}
+@media screen and (min-width:525px) {
+    #clansBox{grid-template-columns: repeat(3, 1fr);}
+}
+@media screen and (min-width:840px) {
+    #clansBox{grid-template-columns: repeat(4, 1fr);}
+}
+@media screen and (min-width:1120px) {
+    #clansBox{grid-template-columns: repeat(5, 1fr);}
+}
+
+
+#clansBox > .clan
+{
+    padding: .5rem;
+    height: 140px;
+    width: 120px;
+    border-radius: 5px;
+    border: 1px solid #15151510;
+    box-shadow: 1px 3px 6px #00000008;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+#clansBox > .clan:hover,
+#clansBox > .clan:active
+{
+    background: #f9f9f9;
+}
+
+#clansBox > .clan > h3 
+{
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--color-main);
+    text-align: center;
+}
+#clansBox > .clan > img
+{
+    height: 70px;
+    width: auto;
+}
+#clansBox > .clan > h4 
+{
+    width: 100%;
+    font-size: .8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+    color: var(--color-main);
+    text-align: center;
+}
+
+.appointment
+{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: .9rem;
+    margin-top: 2rem;
+    color: var(--color-grey);
+}
