@@ -53,7 +53,7 @@ export class MyTeamComponent implements OnInit {
           this.setClan(myTeam_obj, myTeam_obj.players);
           this.permisionOnClan = await this.getPermission();
           this.checkPageStateIfClan();
-        } else if(this.regOpen) this.pageState.defaultState();
+        } else if(this.regOpen)this.pageState.defaultState();
         else this.pageState.extraState();
       });
 
@@ -124,7 +124,8 @@ export class MyTeamComponent implements OnInit {
           this.getClan()
           let token = await this.ASession.getToken({user:this.clan.user, password:this.clan.password}).toPromise();
           localStorage.setItem('mirror-cup-token', token.token);
-        } else this.showError(errorDiv, clan.error)
+          this.getClan()
+        } else this.showError(errorDiv, clan.error);
       }
       registerBtn.classList.remove('loading');
     }

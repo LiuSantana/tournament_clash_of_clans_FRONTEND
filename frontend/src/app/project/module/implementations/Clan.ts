@@ -107,7 +107,6 @@ export class Clan {
                         let teams = localStorage.getItem("mirror-cup-teams");
                         if(teams){
                             let teamsObj:any = JSON.parse(teams);
-                            console.log(teamsObj);
                             teamsObj.clans.push({tag:this.tag, name:this.name, short_name:this.shortName})
                             localStorage.setItem("mirror-cup-teams", JSON.stringify(teamsObj));
                         }
