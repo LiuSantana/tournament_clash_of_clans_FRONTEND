@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.sessionManagement();
-    console.log(this.tag)
-    console.log(this.clan)
   }
 
   decodeToken(token:string) {
@@ -64,7 +62,6 @@ export class LoginComponent implements OnInit {
       error.classList.add('hide');
       this.pageState.defaultState();
       token = this.decodeToken(token.token);
-      console.log(token);
       this.clan = token.clan;
       this.tag = token.tag;
     } else {
