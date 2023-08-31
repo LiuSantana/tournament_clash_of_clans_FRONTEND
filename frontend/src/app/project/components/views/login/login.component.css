@@ -37,6 +37,7 @@ h1
     border: 1px solid #dedede;
 }
 .session-card:hover{transform: scale(1.05);}
+.session-card > * {pointer-events: none;}
 .session-card > p
 {
     color: #3d3d3d;
@@ -174,8 +175,19 @@ h1
 }
 .login-button
 {
-    margin: 1rem 0 5rem 0;
+    margin: .4rem 0 5rem 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 180px;
 }
+.delete_action_button
+{
+    margin: 1.25rem 0 0 0;
+    background: #00000010;
+    color: var(--color-main-dark1);
+    border: 1px solid var(--color-main-dark1);
+    width: 180px;
+}
+.delete_action_button:hover{ background: #00000020;}
+.delete_action_button:active{ background: #00000025;}

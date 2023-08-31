@@ -5,7 +5,7 @@
     DEFAULT STATE 
 -->
 <ng-container *ngIf="this.pageState.default || this.pageState.loading">
-    <div class="session-card" *ngIf="this.clan"> <!-- (existing clan) -->
+    <div class="session-card" *ngIf="this.clan" (click)="this.pageState.updateState()"> <!-- (existing clan) -->
         <p>{{this.clan}}</p>
         <i class="fa-regular fa-circle-check"></i>
     </div>
@@ -44,7 +44,9 @@
             <input name="password" #password/>
         </div>
         <div class="error hide" #login_error></div>
+        <button type="button" class="delete_action_button" (click)="this.pageState.defaultState()">Cancelar</button>
         <button type="button" class="login-button main_action_button" #login_button (click)="this.getTeam(login_button, login_error, user.value, password.value)">Guardar</button>
+        
 
     </div>
 </ng-container>
