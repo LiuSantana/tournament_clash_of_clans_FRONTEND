@@ -122,6 +122,8 @@ export class MyTeamComponent implements OnInit {
         let clan = await this.clan.register(this.APlayer, this.AClan);
         if(!clan.error) {
           this.getClan()
+          let token = await this.ASession.getToken({user:this.clan.user, password:this.clan.password}).toPromise();
+          localStorage.setItem('mirror-cup-token', token.token);
         } else this.showError(errorDiv, clan.error)
       }
       registerBtn.classList.remove('loading');
