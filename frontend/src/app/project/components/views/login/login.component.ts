@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   pageState:PageState = new PageState();
   session:Session = new Session();
   loadingBar!:string;
-  clan!:string;
-  tag!:string;
+  clan!:string | null;
+  tag!:string | null;
 
   constructor(private ASession:ASession, private AClan:AClan, private Router:Router) { }
 
@@ -43,9 +43,7 @@ export class LoginComponent implements OnInit {
     if(token) {
       if(token == "undefined"){
         this.pageState.defaultState();
-        localStorage.removeItem("mirror-cup-teams");
-        localStorage.removeItem("mirror-cup-my-team");
-        localStorage.removeItem("mirror-cup-token");
+        this.closeSession();
       } else {
         this.pageState.defaultState();
         let tokenDecoded:any = this.decodeToken(token);
@@ -53,6 +51,15 @@ export class LoginComponent implements OnInit {
         this.tag = tokenDecoded.tag;
       }
     } else this.pageState.defaultState();
+  }
+
+  closeSession() {
+    localStorage.removeItem("mirror-cup-teams");
+    localStorage.removeItem("mirror-cup-my-team");
+    localStorage.removeItem("mirror-cup-token");
+    this.clan = null;
+    this.tag = null;
+    this.pageState.defaultState();
   }
 
 

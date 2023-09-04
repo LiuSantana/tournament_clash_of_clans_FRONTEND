@@ -34,7 +34,7 @@ export class Session {
 
     }*/
 
-    async getAllData(AClan:AClan,ASession:ASession, clan:string) {
+    async getAllData(AClan:AClan,ASession:ASession, clan:string | null) {
         let response;
         try {
             let clans = await this.getAllClans(AClan);

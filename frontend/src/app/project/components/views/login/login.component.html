@@ -8,6 +8,7 @@
     <div class="session-card" *ngIf="this.clan" (click)="this.pageState.updateState()"> <!-- (existing clan) -->
         <p>{{this.clan}}</p>
         <i class="fa-regular fa-circle-check"></i>
+        <div class="closeSession" (click)="this.closeSession()"><i class="fa-solid fa-xmark"></i></div>
     </div>
     <button class="main_action_button" *ngIf="!this.clan" (click)="this.pageState.updateState()"> <!-- (not clan) -->
         Ya tengo clan

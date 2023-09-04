@@ -22,6 +22,7 @@ h1
 *******************/
 .session-card 
 {
+    position: relative;
     width: 160px;
     height: 40px;
     display: flex;
@@ -58,6 +59,24 @@ h1
 }
 
 .action_box{height: 115px; margin-bottom: 1rem;}
+
+.closeSession 
+{
+    position: absolute;
+    left: -10px;
+    transform: translateX(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    background: #00000008;
+    border: 1px solid #00000010;
+    z-index: 1;
+    pointer-events: all !important;
+}
+.closeSession > i { color: #ff000080; font-size: 1.4rem; pointer-events: none;}
 
 
 /*******************
