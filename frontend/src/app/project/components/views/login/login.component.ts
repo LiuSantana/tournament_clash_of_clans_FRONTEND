@@ -41,10 +41,17 @@ export class LoginComponent implements OnInit {
   sessionManagement() {
     let token = localStorage.getItem('mirror-cup-token');
     if(token) {
-      this.pageState.defaultState();
-      let tokenDecoded:any = this.decodeToken(token);
-      this.clan = tokenDecoded.clan;
-      this.tag = tokenDecoded.tag;
+      if(token == "undefined"){
+        this.pageState.defaultState();
+        localStorage.removeItem("mirror-cup-teams");
+        localStorage.removeItem("mirror-cup-my-team");
+        localStorage.removeItem("mirror-cup-token");
+      } else {
+        this.pageState.defaultState();
+        let tokenDecoded:any = this.decodeToken(token);
+        this.clan = tokenDecoded.clan;
+        this.tag = tokenDecoded.tag;
+      }
     } else this.pageState.defaultState();
   }
 
