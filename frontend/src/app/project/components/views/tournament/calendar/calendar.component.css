@@ -1,0 +1,121 @@
+/*********************
+    GROUP FILTER
+*********************/
+.groupFilter
+{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 30px;
+    border-radius: 40px;
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    box-shadow: 1px 3px 6px #00000010;
+}
+.groupFilter::before
+{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: calc(100% - 0.3rem);
+    height: calc(100% - 0.3rem);
+    border: 1px solid white;
+    border-radius: 30px;
+    pointer-events: none;
+}
+.group
+{
+    width: 25%;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+
+    border-right: 1px solid #2d2d2d20;
+}
+.group:last-child{border-right: unset;}
+.group.active{background: var(--color-main); color:white}
+
+
+/*********************
+    WEEK FILTER
+*********************/
+.weekFilter
+{
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    margin: 0 auto 1.5rem auto;
+    overflow: hidden;
+    clip-path: polygon(0 0, 97% 0, 100% 100%, 3% 100%);
+}
+.weekFilter > .week
+{
+    width: 33%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-main);
+    color: white;
+    font-size: .8rem;
+
+}
+.weekFilter > .week.active
+{
+    background: var(--color-main-dark1);
+}
+
+
+/*********************
+         WARS
+*********************/
+.warList
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.war
+{
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    box-shadow: 1px 3px 6px #00000015;
+    margin-bottom: .75rem;
+    border-radius: 3px;
+
+    display: grid;
+    grid-template-columns: 35% 30% 35%;
+    justify-items: center;
+    
+    cursor: pointer;
+}
+.war.main{background: #9CC9FC;}
+.war * {pointer-events: none;}
+
+.war > .team,
+.war > .result
+{ 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.war > .team > img { height: 80%; width: auto;}
+.war > .team > h3 { font-weight: 500;}

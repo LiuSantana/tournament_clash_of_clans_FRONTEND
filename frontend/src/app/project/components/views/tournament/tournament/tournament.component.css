@@ -1,7 +1,75 @@
+
+#header {margin-bottom: 0;}
+/******************
+    NOT STARTED
+******************/
 .appointment 
 {
+    margin-top: 1.5rem;
     width: 80%;
     text-align: center;
     margin: 0 auto;
     color: var(--color-grey);
+}
+
+/******************
+      STARTED
+******************/
+.tournament_menu
+{
+    position: relative;
+    width: 100vw;
+    overflow-x: scroll;
+    height: 10vh;
+    background: var(--color-main-dark1);
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    padding: 0 20px;
+}
+.tournament_menu::before
+{
+    content: '';
+    position: absolute;
+    bottom: calc(25%);
+    height: 2px;
+    width: 100px;
+    border-radius: 30px;
+    background: #f9f9f9;
+    transition: .3s;
+}
+.tournament_menu.lft_0::before{left: 20px;}
+.tournament_menu.lft_1::before{left: 120px;}
+.tournament_menu.lft_2::before{left: 220px;}
+.tournament_menu.lft_3::before{left: 320px;}
+
+.link
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #f9f9f9;
+    font-size: .9rem;
+}
+.link * {pointer-events: none;}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.tournament_menu::-webkit-scrollbar 
+{
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.tournament_menu
+{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+
+.tournament_app
+{
+    background: #f9f9f9;
+    padding: 2rem;
 }

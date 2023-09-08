@@ -2,6 +2,20 @@
     <div id="header">
         <h1>Competición</h1>
     </div>
-    <p class="appointment">Esta pagina estará disponible cuando empiece el torneo.</p>
+    <!-- TOURNAMENT NOT STARTED -->
+    <p class="appointment" *ngIf="this.pageState.preview">Esta pagina estará disponible cuando empiece el torneo.</p>
+    
+    <!-- TOURNAMENT STARTED -->
+    <div class="tournament_menu lft_0" #menu>
+        <div class="link" #first_link (click)="this.setActiveLink(menu, first_link); this.page = 'calendario'" [attr.index]="0">calendario</div>
+        <div class="link" #second_link (click)="this.setActiveLink(menu, second_link); this.page = 'grupos'" [attr.index]="1">grupos</div>
+        <div class="link" #third_link (click)="this.setActiveLink(menu, third_link); this.page = 'playoff'" [attr.index]="2">playoff</div>
+        <div class="link" #fourth_link (click)="this.setActiveLink(menu, fourth_link); this.page = 'jugadores'" [attr.index]="3">jugadores</div>
+    </div>
+
+
+    <div class="tournament_app">
+        <app-calendar *ngIf="this.page=='calendario'"></app-calendar>
+    </div>
 </section>
 <app-navbar [pagination]="'tournament'"></app-navbar>

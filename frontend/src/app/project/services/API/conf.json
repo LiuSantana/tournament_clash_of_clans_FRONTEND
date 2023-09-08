@@ -1,5 +1,6 @@
 {
     "SERVER":{
-        "url":"https://mirrorcup.org:3000/api/v0.1"
+        "url_impl":"https://mirrorcup.org:3000/api/v0.1",
+        "url":"http://localhost:3000/api/v0.1"
     }
 }

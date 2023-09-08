@@ -1,0 +1,35 @@
+<!-- group filter -->
+<div class="groupFilter" #groupsBox>
+    <div class="group active" #first_group (click)="this.group='A'; this.setActive(groupsBox, first_group)">A</div>
+    <div class="group" #second_group (click)="this.group='B'; this.setActive(groupsBox, second_group)">B</div>
+    <div class="group" #third_group (click)="this.group='C'; this.setActive(groupsBox, third_group)">C</div>
+    <div class="group" #fourth_group (click)="this.group='D'; this.setActive(groupsBox, fourth_group)">D</div>
+</div>
+
+
+<!-- week filter -->
+<div class="weekFilter" #weeksBox>
+    <div class="week active" #first_week (click)="this.week=1; this.setActive(weeksBox, first_week)">Jornada 1</div>
+    <div class="week" #second_week (click)="this.week=2; this.setActive(weeksBox, second_week)">Jornada 2</div>
+    <div class="week" #third_week (click)="this.week=3; this.setActive(weeksBox, third_week)">Jornada 3</div>
+</div>
+
+
+<!-- wars list -->
+<div class="warList">
+    <div class="war">
+        <div class="team">
+            <img src="/assets/lleida.png" />
+            <h3>LPT</h3>
+        </div>
+        <div class="result">
+            <p>0</p>
+            <p>-</p>
+            <p>0</p>
+        </div>
+        <div class="team">
+            <h3>LPT</h3>
+            <img src="/assets/lleida.png" />
+        </div>        
+    </div>
+</div>

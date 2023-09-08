@@ -35,13 +35,12 @@ export class Session {
     }*/
 
     async getAllData(AClan:AClan,ASession:ASession, clan:string | null) {
-        let response;
+        let response:any = true;
         try {
             let clans = await this.getAllClans(AClan);
             if(!clans) response = {error:'Ha habido un error al acceder'}
             if(clan) await this.getMyClan(AClan, clan);
             await this.setToken(ASession);
-            response = true;
         } catch (error) {
             response = {error:'Ha habido un error al acceder'}
         }
