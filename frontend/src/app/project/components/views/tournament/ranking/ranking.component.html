@@ -1,0 +1,7 @@
+<!-- group filter -->
+<div class="groupFilter" #groupsBox>
+    <div class="group active" #first_group (click)="this.group='A'; this.setActive(groupsBox, first_group)">A</div>
+    <div class="group" #second_group (click)="this.group='B'; this.setActive(groupsBox, second_group)">B</div>
+    <div class="group" #third_group (click)="this.group='C'; this.setActive(groupsBox, third_group)">C</div>
+    <div class="group" #fourth_group (click)="this.group='D'; this.setActive(groupsBox, fourth_group)">D</div>
+</div>

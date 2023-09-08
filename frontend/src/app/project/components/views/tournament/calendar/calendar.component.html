@@ -9,15 +9,21 @@
 
 <!-- week filter -->
 <div class="weekFilter" #weeksBox>
-    <div class="week active" #first_week (click)="this.week=1; this.setActive(weeksBox, first_week)">Jornada 1</div>
-    <div class="week" #second_week (click)="this.week=2; this.setActive(weeksBox, second_week)">Jornada 2</div>
-    <div class="week" #third_week (click)="this.week=3; this.setActive(weeksBox, third_week)">Jornada 3</div>
+    <div 
+      #week_div
+      class="week active" 
+      (click)="this.week=1; this.setActive(weeksBox, week_div)" 
+      *ngFor=" let a of this.screen; let i = index"
+      [ngClass]="{ 'active': i == 0, 'week': true }"
+    >
+    {{this.screen.length == 3 ? 'Sem. ' : "Semana "}}{{i + 1}}
+    </div>
 </div>
 
 
 <!-- wars list -->
 <div class="warList">
-    <div class="war">
+    <div class="war" *ngFor="let a of this.matches">
         <div class="team">
             <img src="/assets/lleida.png" />
             <h3>LPT</h3>

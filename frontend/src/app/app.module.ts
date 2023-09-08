@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyTeamComponent } from './project/components/views/my-team/my-team.component';
 import { TournamentComponent } from './project/components/views/tournament/tournament/tournament.component';
 import { CalendarComponent } from './project/components/views/tournament/calendar/calendar.component';
+import { RankingComponent } from './project/components/views/tournament/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CalendarComponent } from './project/components/views/tournament/calenda
     TeamsComponent,
     MyTeamComponent,
     TournamentComponent,
-    CalendarComponent
+    CalendarComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
