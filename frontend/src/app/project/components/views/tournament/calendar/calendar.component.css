@@ -48,7 +48,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
 }
 
 .war
@@ -90,3 +90,273 @@
     .war{height: 60px; padding: 0 4px;}
     .war > .team > h3 {font-size: .9rem;}
 }
+
+
+/*********************
+    WAR DETAILS
+*********************/
+/* header */
+.warHeader
+{
+    width: 100vw;
+    background:var(--color-main-dark1);
+    transform: translate(-2rem, -2rem);
+    padding: 1rem 2rem;
+}
+@media screen and (max-width:340px) {
+    .warHeader{transform: translate(-1rem, -1rem);}
+}
+.warHeader .back
+{
+    height: 30px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF20;
+    border-radius: 30px;
+    margin-bottom: 1rem;
+}
+.warHeader .back > i { color: #f9f9f9; pointer-events: none;}
+.warHeader .back:hover,
+.warHeader .back:active
+{ background: #ffffff30;}
+
+.warHeader h2
+{
+    font-size: .95rem;
+    color: white;
+    font-weight: 400;
+}
+
+/* result */
+.warResult
+{
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    max-width: 500px;
+    margin: auto;
+}
+.result_team
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.result_team > h3 { font-size: 1.1rem; font-weight: 500; line-height: 30px;}
+.result_team > img { height: 80px;}
+.result_stars 
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #3d3d3d;
+}
+.result_percentage
+{
+    position: absolute;
+    bottom: 0;
+    left:50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result_percentage > h6 { font-size: .8rem; line-height: 30px; font-weight: 400;}
+
+@media screen and (max-width:424px) {
+    .warResult {height: 100px;}
+    .result_team > img { height: 60px;}
+    .result_stars {font-size: 1.6rem;}
+}
+@media screen and (max-width:340px) {
+    .warResult {height: 90px;}
+    .result_team > img { height: 50px;}
+    .result_stars {font-size: 1.4rem;}
+}
+
+.main_action_button.results
+{
+    margin: 2rem 0 3rem 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    padding: unset;
+}
+
+/*******************
+       PLAYERS
+*******************/
+section.players 
+{
+    position: relative;
+    width: 100vw;
+    transform: translateX(-2rem);
+    min-height: 40vh;
+    background: #EBF5FF;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    padding-bottom: 8rem;
+}
+section.players::before
+{
+    content: '';
+    position: absolute;
+    top:0;
+    transform: translateY(-50%);
+    left:1%;
+    height: 4px;
+    width: 98%;
+    border-radius: 30px;
+    background: var(--color-main);
+}
+section.players > h1 
+{ 
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: 1.2rem;
+    color: var(--color-main-dark1);
+    margin-bottom: 2rem;
+}
+section.players > p { color: var(--color-main); opacity: .6; }
+
+@media screen and (max-width:340px) {
+    section.players {transform: translateX(-1rem);}
+}
+
+/* ATTACKS */
+.teamSelector
+{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+.teamAttacks
+{
+    height: 100px;
+    width: 140px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF40;
+    color: #3d3d3d90;
+    border: 1px solid #00000015;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.teamAttacks.active
+{
+    border:unset;
+    border-bottom: 6px solid #4099FF80;
+    box-shadow: 1px 3px 6px #00000015;
+    box-shadow: 0 0 20px #ffffff96;
+    background: #4099FF20;
+    color: var(--color-main);
+}
+
+.attacksList
+{
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.attacksList > .team 
+{
+    display:none;
+    width: 80%;
+    align-items: center;
+    flex-direction: column;
+}
+.attacksList > .team.active { display: flex; }
+
+.attacksList > .team > .attack 
+{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 10% 44% 22% 22%;
+    align-items: center;
+}
+.attacksList > .team > .attack:nth-child(2n+1){background: #D6E9FF;}
+.attacksList > .team > .attack:nth-child(2n){background: #F3F9FF}
+.attacksList > .team.active > .attack > p {font-weight: 500;}
+.attacksList > .team.active > .attack > p:not([name="name"]){text-align: center; position: relative;}
+.attacksList > .team.active > .attack:nth-child(1) > p:not([name="name"])::before
+{
+    content: attr(long-name);
+    position: absolute;
+    left: 50%;
+    top: -1rem;
+    transform: translate(-50%, -100%);
+    font-size: .8rem;
+    font-weight: 300;
+}
+.attacksList > .team.active > .attack > input
+{
+    border: none;
+    outline: none;
+    background: none;
+}
+.attacksList > .team.active > .attack > input:not([name="name"]){ text-align: center;}
+.attacksList > .team.active > .attack > p[name="name"]
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.extra
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.extra > i { color: var(--color-main); opacity: .6; font-size: .6rem; }
+
+.actionsBox
+{
+    align-self: flex-start;
+    margin: 2rem 0 0 10%;
+    display: flex;
+}
+.actionsBox > button {margin-right: .25rem; font-size: .9rem !important;}
+.actionsBox > .delete_action_button
+{
+    background: #ff000080;
+    color: white;
+    border:none;
+    margin-left: unset;
+}
+@media screen and (max-width:420px) {
+    .attacksList > .team {width: 100%;}
+    .attacksList > .team.active > .attack:nth-child(1) > p:not([name="name"])::before {content: attr(short-name);}
+    .actionsBox{margin: 1rem 0 0 0;}
+}
+
+

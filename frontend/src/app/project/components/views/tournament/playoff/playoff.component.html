@@ -1,0 +1,19 @@
+
+<div class="braket" style="--width: 180px">
+    <div class="round" *ngFor="let round of this.rounds">
+        <div class="header">
+            {{this.matchName(round.round)}}
+        </div>
+        <div class="war" *ngFor="let war of round.wars">
+            <div class="team">
+                <p>Lleida Ponent</p>
+                <p>0</p>
+            </div>
+            <div class="team">
+                <p>Lleida Ponent</p>
+                <p>0</p>
+            </div>
+        </div>
+    </div>
+</div>
+

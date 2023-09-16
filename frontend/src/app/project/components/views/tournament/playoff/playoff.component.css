@@ -1,0 +1,110 @@
+
+.braket
+{
+    display: grid;
+    /* columns in TS file (AfterViewInit) */
+    width: calc(100% + 2rem);
+    transform: translateX(-1rem);
+    overflow-x: scroll;
+    border-radius: 10px;
+    padding-bottom: 6rem;
+    grid-gap: 10px;
+}
+.round
+{
+    position: relative;
+    width: var(--width); /* HTML var */
+    padding-top: 40px;
+}
+.round:nth-child(1)
+{
+    padding-top: 50px;
+    padding-left: 1rem;
+
+}
+.round > .header
+{
+    position: absolute;
+    height: 40px;
+    top: 0;
+    left: 0;
+    width: calc(100% + 1rem);
+    
+    background: var(--color-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#f9f9f9;
+    padding-right: 1rem;
+}
+
+.war
+{
+    position: relative;
+    width: 90%;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+.round:not(:first-child) > .war::before,
+.round:not(:first-child) > .war::after
+{
+    content: '';
+    position: absolute;
+    top:50%;
+    left:0;
+    background: var(--color-main);
+}
+.round:not(:first-child) > .war::before
+{
+    transform: translate(-50%, -50%) rotate(45deg);
+
+    height: 6px;
+    width: 6px;
+    border-radius: 1px;
+}
+.round:not(:first-child) > .war::after
+{
+    height: 50%;
+    width: 1px;
+    transform: translate(-50%, -50%);
+}
+.round:not(:first-child) > .war:nth-child(2n+1):before,
+.round:not(:first-child) > .war:nth-child(2n+1):after
+{background: var(--color-main-dark1);}
+.round:nth-child(1) .war{ margin-bottom: 10px;}
+.war > .team
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 85% 15%;
+}
+.war:nth-child(4n-2),
+.war:nth-child(4n-1)
+{
+    border-right: 3px solid var(--color-main);
+}
+.war:nth-child(4n),
+.war:nth-child(4n+1)
+{
+    border-right: 3px solid var(--color-main-dark1);
+}
+
+.war > .team > p
+{
+    height: 100%;
+    width: 100%;
+    font-size: .9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px;
+    line-height: 30px;
+}
+.war > .team > p:nth-child(1){padding-left: 8px;}
+.war > .team > p:nth-child(2)
+{
+    background: #dedede;
+    text-align: center;
+}

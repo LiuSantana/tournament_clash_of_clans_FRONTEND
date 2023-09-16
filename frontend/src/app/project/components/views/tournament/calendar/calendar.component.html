@@ -1,41 +1,123 @@
-<!-- group filter -->
-<div class="groupFilter" #groupsBox>
-    <div class="group active" #first_group (click)="this.group='A'; this.setActive(groupsBox, first_group)">A</div>
-    <div class="group" #second_group (click)="this.group='B'; this.setActive(groupsBox, second_group)">B</div>
-    <div class="group" #third_group (click)="this.group='C'; this.setActive(groupsBox, third_group)">C</div>
-    <div class="group" #fourth_group (click)="this.group='D'; this.setActive(groupsBox, fourth_group)">D</div>
-</div>
+<!--------
+    WARS LIST
+--------->
 
-
-<!-- week filter -->
-<div class="weekFilter" #weeksBox>
-    <div 
-      #week_div
-      class="week active" 
-      (click)="this.week=1; this.setActive(weeksBox, week_div)" 
-      *ngFor=" let a of this.screen; let i = index"
-      [ngClass]="{ 'active': i == 0, 'week': true }"
-    >
-    {{this.screen.length == 3 ? 'Sem. ' : "Semana "}}{{i + 1}}
+<ng-container *ngIf="!this.pageState.extra">
+    <!-- group filter -->
+    <div class="groupFilter" #groupsBox>
+        <div class="group active" #first_group (click)="this.group='A'; this.setActive(groupsBox, first_group)">A</div>
+        <div class="group" #second_group (click)="this.group='B'; this.setActive(groupsBox, second_group)">B</div>
+        <div class="group" #third_group (click)="this.group='C'; this.setActive(groupsBox, third_group)">C</div>
+        <div class="group" #fourth_group (click)="this.group='D'; this.setActive(groupsBox, fourth_group)">D</div>
     </div>
-</div>
 
 
-<!-- wars list -->
-<div class="warList">
-    <div class="war" *ngFor="let a of this.matches">
-        <div class="team">
-            <img src="/assets/lleida.png" />
+    <!-- week filter -->
+    <div class="weekFilter" #weeksBox>
+        <div 
+        #week_div
+        class="week active" 
+        (click)="this.week=1; this.setActive(weeksBox, week_div)" 
+        *ngFor=" let a of this.screen; let i = index"
+        [ngClass]="{ 'active': i == 0, 'week': true }"
+        >
+        {{this.screen.length == 3 ? 'Sem. ' : "Semana "}}{{i + 1}}
+        </div>
+    </div>
+
+
+    <!-- wars list -->
+    <div class="warList">
+        <div class="war" *ngFor="let a of this.matches" (click)="this.warDetails()">
+            <div class="team">
+                <img src="/assets/lleida.png" />
+                <h3>LPT</h3>
+            </div>
+            <div class="result">
+                <p>0</p>
+                <p>-</p>
+                <p>0</p>
+            </div>
+            <div class="team">
+                <h3>LPT</h3>
+                <img src="/assets/lleida.png" />
+            </div>        
+        </div>
+    </div>
+</ng-container>
+
+
+<!--------
+    WAR DETAILS
+--------->
+<ng-container *ngIf="this.pageState.extra">
+    <!-- header -->
+    <div class="warHeader">
+        <div class="back" (click)="this.goBackToList()"><i class="fa-solid fa-arrow-left"></i></div>
+        <h2>TEAM A - TEAM B</h2>
+    </div>
+
+    <!-- result -->
+    <div class="warResult">
+        <div class="result_team">
+            <img src="/assets/lleida.png"/>
             <h3>LPT</h3>
         </div>
-        <div class="result">
-            <p>0</p>
-            <p>-</p>
-            <p>0</p>
+        <div class="result_stars">
+            <h3>15 - 15</h3>
+            <div class="result_percentage">
+                <h6>100 % 100</h6>
+            </div>
         </div>
-        <div class="team">
+        <div class="result_team">
+            <img src="/assets/lleida.png"/>
             <h3>LPT</h3>
-            <img src="/assets/lleida.png" />
-        </div>        
+        </div>
     </div>
-</div>
+
+    <!-- get result btn -->
+    <!-- ngIf war not ended -->
+    <button class="main_action_button results">CARGAR RESULTADOS</button>
+
+    <!-- players -->
+    <section class="players">
+        <h1>jugadores</h1>
+        <div class="teamSelector" #group>
+            <div class="teamAttacks active" #team1 (click)="this.setActive(group, team1); this.showTeam(teamA, teamB)">LPT</div>
+            <div class="teamAttacks" #team2 (click)="this.setActive(group, team2); this.showTeam(teamB, teamA)">LPT</div>
+        </div>
+        <!-- ngIf war attacks -->
+        <div class="attacksList">
+            <div class="team active" #teamA>
+                <div class="attack">
+                    <div class="extra"><i class="fa-solid fa-star"></i></div>
+                    <p name="name" *ngIf="!this.edit">Player 1</p>
+                    <p name="stars" long-name="estrellas" short-name="☆" *ngIf="!this.edit">2</p>
+                    <p name="percentage" long-name="porcentaje" short-name="%" *ngIf="!this.edit">80</p>
+                    
+                    <input type="text" name="name" *ngIf="this.edit" value="Player 1">
+                    <input type="text" name="stars" *ngIf="this.edit" value="2">
+                    <input type="text" name="percentage" *ngIf="this.edit" value="80">
+                </div>
+            </div>
+            <div class="team" #teamB>
+                <div class="attack">
+                    <div class="extra"></div>
+                    <p name="name" *ngIf="!this.edit">Player 2</p>
+                    <p name="stars" *ngIf="!this.edit">1</p>
+                    <p name="percentage" *ngIf="!this.edit">89</p>
+                    
+                    <input type="text" name="name" *ngIf="this.edit" value="Player 2">
+                    <input type="text" name="stars" *ngIf="this.edit" value="1">
+                    <input type="text" name="percentage" *ngIf="this.edit" value="89">
+                </div>
+            </div>
+        </div>
+        <!-- *ngIf admin -->
+        <div class="actionsBox">
+            <button class="main_action_button">Guardar</button>
+            <button class="delete_action_button">Sanción</button>
+        </div>
+
+    </section>
+</ng-container>

@@ -17,6 +17,7 @@
     <div class="tournament_app">
         <app-calendar *ngIf="this.page=='calendario'"></app-calendar>
         <app-ranking *ngIf="this.page=='grupos'"></app-ranking>
+        <app-playoff *ngIf="this.page=='playoff'"></app-playoff>
     </div>
 </section>
 <app-navbar [pagination]="'tournament'"></app-navbar>
