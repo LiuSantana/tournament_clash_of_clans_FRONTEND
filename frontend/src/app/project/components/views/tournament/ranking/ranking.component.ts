@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class RankingComponent implements OnInit {
   group:string = 'A';
 
+  // temporal variables
+  teams:any = [1,2,3,4]
   constructor() { }
 
   ngOnInit(): void {

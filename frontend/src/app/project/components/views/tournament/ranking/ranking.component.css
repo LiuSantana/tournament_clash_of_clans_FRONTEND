@@ -1,0 +1,14 @@
+.table{min-height: 60vh;}
+.table > li
+{
+    width: 540px;
+}
+.table > li > div
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table > li > .num { width: 60px; }
+.table > li > .short_num { width: 40px; }
+.table > li > .string { width: 140px; justify-content: flex-start;}

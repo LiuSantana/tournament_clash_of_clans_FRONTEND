@@ -304,5 +304,46 @@ body
 
     border-right: 1px solid #2d2d2d20;
 }
-.group:last-child{border-right: unset;}
-.group.active{background: var(--color-main); color:white}
+.group:last-child { border-right: unset;}
+.group.active { background: var(--color-main); color:white }
+
+/* TABLE */
+.table
+{
+    width: 100%;
+    overflow-x: scroll;
+}
+.table::-webkit-scrollbar { display: none; }
+.table { -ms-overflow-style: none; scrollbar-width: none; }
+.table > li 
+{
+    height: 40px;
+    list-style: none;
+    display: flex;
+}
+.table > li.header
+{
+    height: 26px;
+    justify-content: flex-end;
+    align-items: center;
+}
+.table > li.header > div
+{
+    color: white;
+    background: var(--color-main);
+    font-size: .9rem;
+    font-weight: 500;
+    height: 100%;
+}
+.table > li.header > div:first-child{border-top-left-radius: 5px;}
+.table > li.header > div:last-child{border-top-right-radius: 5px;}
+.table > li > div > p
+{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table > li:not(.header):nth-child(2n){background: #4099FF20;}
+.table > li:not(.header):nth-child(2n+1){background: #4099FF05;}
