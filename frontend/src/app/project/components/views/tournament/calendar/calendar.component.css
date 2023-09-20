@@ -1,6 +1,30 @@
 /*********************
     WEEK FILTER
 *********************/
+.weekFilterBox
+{
+   width: clac(100% + 1rem);
+   transform: translateX(-.5rem);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 2rem;
+}
+.weekFilterBox .arrow
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 30px;
+    aspect-ratio: 1/1;
+    background: #00000005;
+}
+.weekFilterBox .arrow > i
+{
+    pointer-events: none;
+    color:var(--color-main);
+}
 .weekFilter
 {
     position: relative;
@@ -11,7 +35,8 @@
     align-items: center;
     justify-content: space-between;
     background: white;
-    margin: 0 auto 2rem auto;
+    /* margin: 0 auto 2rem auto; */
+    margin: 0 .5rem;
     overflow: hidden;
     clip-path: polygon(0 0, 97% 0, 100% 100%, 3% 100%);
 }
@@ -32,6 +57,7 @@
 {
     background: var(--color-main-dark1);
 }
+.weekFilter > .hide{display: none;}
 @media screen and (min-width: 1024px) {
     .weekFilter{max-width: 750px;}
     .weekFilter > .week{width: 19.85%;}
