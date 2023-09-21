@@ -21,6 +21,9 @@ export class AWar {
     getWarAttacks(id:number):Observable<any> {
         return this.http.get(`${this.url}/wars/${id}/attacks`, this.requestOptions);
     }
+    getRanking():Observable<any> {
+        return this.http.get(`${this.url}/wars/ranking`, this.requestOptions);
+    }
 
 
     private createHeader() {

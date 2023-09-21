@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AWar } from 'src/app/project/services/API/war/AWar';
 
 @Component({
   selector: 'app-ranking',
@@ -9,10 +10,25 @@ export class RankingComponent implements OnInit {
   group:string = 'A';
 
   // temporal variables
-  teams:any = [1,2,3,4]
-  constructor() { }
+  teams!:any;
+  Allteams!:any;
+  constructor(private AWar:AWar) { }
 
   ngOnInit(): void {
+    this.getRanking();
+  }
+
+  async getRanking() {
+    let wars:any = await this.AWar.getRanking().toPromise();
+    if(wars) {
+      console.log(wars);
+      this.Allteams = wars.data;
+      this.filterRanking();
+    }
+  }
+
+  filterRanking() {
+    this.teams = this.Allteams.filter((t:any) => t.tournament_group == this.group);
   }
   
   setActive(groupBox:HTMLDivElement, group:HTMLDivElement){

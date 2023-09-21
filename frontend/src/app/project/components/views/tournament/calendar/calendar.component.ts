@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageState } from 'src/app/project/module/implementations/angular_objects/PageState';
 import { AWar } from 'src/app/project/services/API/war/AWar';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-calendar',
@@ -14,16 +15,20 @@ export class CalendarComponent implements OnInit {
   weeks:any = Array(7).fill(0);
   screen:number = screen.width > 1023 ? 5 : 3;
   war!:any;
+  admin:boolean = false;
 
   matches!:any;
   allMatches:any = [];
   attacks!:any;
-  // temporal vars
-  edit:boolean = true;
 
 
   constructor(private AWar:AWar) {
     this.getWars()
+    let token = localStorage.getItem('mirror-cup-token');
+    if(token){
+      let clan:any = jwt_decode(token);
+      if(clan.clan == '#0000') this.admin = true;
+    }
   }
 
   ngOnInit(): void {}

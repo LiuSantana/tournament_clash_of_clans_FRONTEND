@@ -98,11 +98,11 @@
                     <div class="extra"><i class="fa-solid fa-star"></i></div>
                     <p name="name">{{attack.name}}</p>
 
-                    <p name="stars" long-name="estrellas" short-name="☆" *ngIf="!this.edit">{{attack.stars}}</p>
-                    <p name="percentage" long-name="porcentaje" short-name="%" *ngIf="!this.edit">{{attack.percentage}}</p>
+                    <p name="stars" long-name="estrellas" short-name="☆" *ngIf="!this.admin">{{attack.stars}}</p>
+                    <p name="percentage" long-name="porcentaje" short-name="%" *ngIf="!this.admin">{{attack.percentage}}</p>
                     
-                    <input type="text" name="stars" *ngIf="this.edit" [value]="attack.stars">
-                    <input type="text" name="percentage" *ngIf="this.edit" [value]="attack.percentage">
+                    <input type="text" name="stars" *ngIf="this.admin" [value]="attack.stars">
+                    <input type="text" name="percentage" *ngIf="this.admin" [value]="attack.percentage">
                 </div>
             </div>
             <div class="team" #teamB>
@@ -110,16 +110,16 @@
                     <div class="extra"></div>
                     <p name="name">{{attack.name}}</p>
 
-                    <p name="stars" *ngIf="!this.edit">1</p>
-                    <p name="percentage" *ngIf="!this.edit">89</p>
+                    <p name="stars" *ngIf="!this.admin">1</p>
+                    <p name="percentage" *ngIf="!this.admin">89</p>
                     
-                    <input type="text" name="stars" *ngIf="this.edit" [value]="attack.stars">
-                    <input type="text" name="percentage" *ngIf="this.edit" [value]="attack.percentage">
+                    <input type="text" name="stars" *ngIf="this.admin" [value]="attack.stars">
+                    <input type="text" name="percentage" *ngIf="this.admin" [value]="attack.percentage">
                 </div>
             </div>
         </div>
         <!-- *ngIf admin -->
-        <div class="actionsBox">
+        <div class="actionsBox" *ngIf="this.admin">
             <button class="main_action_button">Guardar</button>
             <button class="delete_action_button">Sanción</button>
         </div>

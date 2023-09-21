@@ -1,9 +1,9 @@
 <!-- group filter -->
 <div class="groupFilter" #groupsBox>
-    <div class="group active" #first_group (click)="this.group='A'; this.setActive(groupsBox, first_group)">A</div>
-    <div class="group" #second_group (click)="this.group='B'; this.setActive(groupsBox, second_group)">B</div>
-    <div class="group" #third_group (click)="this.group='C'; this.setActive(groupsBox, third_group)">C</div>
-    <div class="group" #fourth_group (click)="this.group='D'; this.setActive(groupsBox, fourth_group)">D</div>
+    <div class="group active" #first_group (click)="this.group='A'; this.setActive(groupsBox, first_group); this.filterRanking()">A</div>
+    <div class="group" #second_group (click)="this.group='B'; this.setActive(groupsBox, second_group); this.filterRanking()">B</div>
+    <div class="group" #third_group (click)="this.group='C'; this.setActive(groupsBox, third_group); this.filterRanking()">C</div>
+    <div class="group" #fourth_group (click)="this.group='D'; this.setActive(groupsBox, fourth_group); this.filterRanking()">D</div>
 </div>
 
 <ul class="table">
@@ -15,9 +15,9 @@
         <div class="num">%</div>
         <div class="num">PTS</div>
     </li>
-    <li class="row" *ngFor="let team of this.teams">
-        <div class="short_num">{{team}}</div>
-        <div class="string"><p>Lleida Ponent afabfg de </p></div>
+    <li class="row" *ngFor="let team of this.teams; let i = index">
+        <div class="short_num">{{i+1}}</div>
+        <div class="string"><p>{{team.name}}</p></div>
         <div class="num">0</div>
         <div class="num">0</div>
         <div class="num">0</div>
