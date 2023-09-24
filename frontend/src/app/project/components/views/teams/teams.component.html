@@ -10,7 +10,7 @@
     <div id="clansBox" *ngIf="this.pageState.default">
         <div class="clan" *ngFor="let t of this.teams" (click)="this.router.navigate(['/myteam'], { queryParams: { clan:t.tag } });">
             <h3>{{t.short_name}}</h3>
-            <img src="assets/lleida.png" alt="Image">
+            <img src="assets/teams/{{t.tag.substring(1)}}.png" alt="Image">
             <h4>{{t.name}}</h4>
         </div>
     </div>

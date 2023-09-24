@@ -23,7 +23,7 @@ export class CalendarComponent implements OnInit {
 
 
   constructor(private AWar:AWar) {
-    this.getWars()
+    this.getWars();
     let token = localStorage.getItem('mirror-cup-token');
     if(token){
       let clan:any = jwt_decode(token);
@@ -59,6 +59,25 @@ export class CalendarComponent implements OnInit {
     } catch(e) {
       this.attacks = {};
     }
+  }
+
+  async endWar(btn:HTMLButtonElement, error:HTMLDivElement){
+    btn.classList.add('loading');
+    try {
+      let result = await this.AWar.endWar(this.war.id).toPromise();
+      console.log(result)
+      if(result) {
+        console.log(result);
+        let war = await this.AWar.getEndedWar(this.war.id).toPromise();
+        if(war) this.war = war.data[0];
+      }
+      error.classList.add('hide');
+      this.getWars();
+    } catch(e:any) {
+      error.innerHTML = e.error.error
+      error.classList.remove('hide');
+    }
+    btn.classList.remove('loading');
   }
 
   setActive(groupBox:HTMLDivElement, group:HTMLDivElement){

@@ -109,11 +109,12 @@
 }
 .war > .result{grid-template-columns: repeat(3, 1fr);}
 
-.war > .team > img { height: 70%; width: auto;}
+.war > .team > img { height: 56px; width: auto;}
 .war > .team > h3 { font-weight: 500;}
 
 @media screen and (max-width: 400px) {
     .war{height: 60px; padding: 0 4px;}
+    .war > .team > img { height: 42px; width: auto;}
     .war > .team > h3 {font-size: .9rem;}
 }
 
@@ -214,6 +215,8 @@
     .result_stars {font-size: 1.4rem;}
 }
 
+
+.error{margin: 1rem 0 0 0}
 .main_action_button.results
 {
     margin: 2rem 0 3rem 50%;

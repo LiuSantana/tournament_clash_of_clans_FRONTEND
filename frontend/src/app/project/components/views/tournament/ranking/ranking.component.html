@@ -18,11 +18,11 @@
     <li class="row" *ngFor="let team of this.teams; let i = index">
         <div class="short_num">{{i+1}}</div>
         <div class="string"><p>{{team.name}}</p></div>
-        <div class="num">0</div>
-        <div class="num">0</div>
-        <div class="num">0</div>
-        <div class="num">0</div>
-        <div class="num">0</div>
-        <div class="num">0</div>
+        <div class="num">{{team.wars}}</div>
+        <div class="num">{{team.win}}</div>
+        <div class="num">{{team.loss}}</div>
+        <div class="num">{{team.stars}}</div>
+        <div class="num">{{team.percentage}}</div>
+        <div class="num">{{team.pts}}</div>
     </li>
 </ul>

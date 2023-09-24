@@ -18,10 +18,10 @@
         <div class="weekFilter" #weeksBox>
             <div 
             #week_div
-            class="week active" 
+            class="week" 
             (click)="this.week=i+1; this.setActive(weeksBox, week_div); this.setMatches()" 
             *ngFor=" let a of this.weeks; let i = index"
-            [ngClass]="{ 'active': i == 0, 'week': true, 'hide': i >= this.screen }"
+            [ngClass]="{ 'active': i+1 == this.week, 'week': true, 'hide': i >= this.screen }"
             >
                 {{this.screen == 3 ? 'Sem. ' : "Semana "}}{{i + 1}}
             </div>
@@ -34,7 +34,7 @@
     <div class="warList">
         <div class="war" *ngFor="let war of this.matches" (click)="this.warDetails(); this.setWar(war)">
             <div class="team">
-                <img src="/assets/lleida.png" />
+                <img src="assets/teams/{{war.clan_A.substring(1)}}.png" />
                 <h3>{{war.clan_A_short_name}}</h3>
             </div>
             <div class="result">
@@ -44,7 +44,7 @@
             </div>
             <div class="team">
                 <h3>{{war.clan_B_short_name}}</h3>
-                <img src="/assets/lleida.png" />
+                <img src="assets/teams/{{war.clan_B.substring(1)}}.png" />
             </div>        
         </div>
     </div>
@@ -64,7 +64,7 @@
     <!-- result -->
     <div class="warResult">
         <div class="result_team">
-            <img src="/assets/lleida.png"/>
+            <img src="assets/teams/{{this.war.clan_A.substring(1)}}.png"/>
             <h3>{{this.war.clan_A_short_name}}</h3>
         </div>
         <div class="result_stars">
@@ -74,14 +74,15 @@
             </div>
         </div>
         <div class="result_team">
-            <img src="/assets/lleida.png"/>
+            <img src="assets/teams/{{this.war.clan_B.substring(1)}}.png"/>
             <h3>{{this.war.clan_B_short_name}}</h3>
         </div>
     </div>
 
     <!-- get result btn -->
     <!-- ngIf war not ended -->
-    <button class="main_action_button results" *ngIf="this.war.state!='finished'">CARGAR RESULTADOS</button>
+    <div class="error" #error_endWar>abc</div>
+    <button class="main_action_button results" *ngIf="this.war.state!='finished'" #btn (click)="this.endWar(btn,error_endWar)">CARGAR RESULTADOS</button>
     <div class="spacer" *ngIf="this.war.state =='finished'" style="height:60px"></div>
 
     <!-- players -->

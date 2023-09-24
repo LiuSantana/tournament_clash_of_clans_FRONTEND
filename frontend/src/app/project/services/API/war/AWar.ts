@@ -24,6 +24,12 @@ export class AWar {
     getRanking():Observable<any> {
         return this.http.get(`${this.url}/wars/ranking`, this.requestOptions);
     }
+    getEndedWar(id:string):Observable<any> {
+        return this.http.get(`${this.url}/wars/${id}/results`, this.requestOptions);
+    }
+    endWar(id:string):Observable<any> {
+        return this.http.post(`${this.url}/wars/${id}`, this.requestOptions);
+    }
 
 
     private createHeader() {
