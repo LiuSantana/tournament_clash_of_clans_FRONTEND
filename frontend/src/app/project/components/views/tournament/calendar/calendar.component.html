@@ -81,7 +81,7 @@
 
     <!-- get result btn -->
     <!-- ngIf war not ended -->
-    <div class="error hide" #error_endWar>abc</div>
+    <div class="error hide" #error_endWar></div>
     <button class="main_action_button results" *ngIf="this.war.state!='finished'" #btn (click)="this.endWar(btn,error_endWar)">CARGAR RESULTADOS</button>
     <div class="spacer" *ngIf="this.war.state =='finished'" style="height:60px"></div>
 
