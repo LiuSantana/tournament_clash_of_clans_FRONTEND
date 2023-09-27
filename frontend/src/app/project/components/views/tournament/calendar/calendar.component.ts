@@ -65,11 +65,12 @@ export class CalendarComponent implements OnInit {
     btn.classList.add('loading');
     try {
       let result = await this.AWar.endWar(this.war.id).toPromise();
-      console.log(result)
       if(result) {
-        console.log(result);
         let war = await this.AWar.getEndedWar(this.war.id).toPromise();
-        if(war) this.war = war.data[0];
+        if(war) {
+          this.war = war.data[0];
+          this.setWar(war.data[0]);
+        }
       }
       error.classList.add('hide');
       this.getWars();

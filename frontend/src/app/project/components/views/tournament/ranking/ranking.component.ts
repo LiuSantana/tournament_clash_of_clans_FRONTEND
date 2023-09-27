@@ -16,6 +16,7 @@ export class RankingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRanking();
+    console.log(this.Allteams)
   }
 
   async getRanking() {

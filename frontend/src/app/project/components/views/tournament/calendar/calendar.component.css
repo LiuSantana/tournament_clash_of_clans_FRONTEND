@@ -335,9 +335,9 @@ section.players > p { color: var(--color-main); opacity: .6; }
 }
 .attacksList > .team > .attack:nth-child(2n+1){background: #D6E9FF;}
 .attacksList > .team > .attack:nth-child(2n){background: #F3F9FF}
-.attacksList > .team.active > .attack > p {font-weight: 500;}
-.attacksList > .team.active > .attack > p:not([name="name"]){text-align: center; position: relative;}
-.attacksList > .team.active > .attack:nth-child(1) > p:not([name="name"])::before
+.attacksList > .team > .attack > p {font-weight: 500;}
+.attacksList > .team > .attack > p:not([name="name"]){text-align: center; position: relative;}
+.attacksList > .team > .attack:nth-child(1) > p:not([name="name"])::before
 {
     content: attr(long-name);
     position: absolute;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { APlayer } from 'src/app/project/services/API/player/APlayer';
 
 @Component({
   selector: 'app-players',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
+  players:any;
 
-  constructor() { }
+  constructor(private APlayer:APlayer) { }
 
   ngOnInit(): void {
+    this.getPlayers();
   }
 
+  async getPlayers() {
+    let players = await this.APlayer.getPlayerRank().toPromise();
+    this.players = players;
+    console.log(players);
+  }
 }

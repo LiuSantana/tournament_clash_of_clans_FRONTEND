@@ -1,1 +1,15 @@
-
+<ul class="table">
+    <li class="header">
+        <div class="num">ATKs</div>
+        <div class="num">☆</div>
+        <div class="num">%</div>
+    </li>
+    <li class="row" *ngFor="let player of this.players; let i = index">
+        <div class="short_num">{{i+1}}</div>
+        <div class="img"><img src="{{'assets/teams/'+player.clan.substring(1)+'.png'}}"/></div>
+        <div class="string"><p>{{player.name}}</p></div>
+        <div class="num">{{player.attacks}}</div>
+        <div class="num">{{player.stars}}</div>
+        <div class="num">{{player.percentage}}</div>
+    </li>
+</ul>

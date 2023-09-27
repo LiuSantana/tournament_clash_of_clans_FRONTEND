@@ -17,6 +17,7 @@
     </li>
     <li class="row" *ngFor="let team of this.teams; let i = index">
         <div class="short_num">{{i+1}}</div>
+        <div class="img"><img src="{{'assets/teams/'+team.clan.substring(1)+'.png'}}"/></div>
         <div class="string"><p>{{team.name}}</p></div>
         <div class="num">{{team.wars}}</div>
         <div class="num">{{team.win}}</div>

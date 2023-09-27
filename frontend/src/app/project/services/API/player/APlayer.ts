@@ -26,7 +26,10 @@ export class APlayer {
 
     delete(id:string):Observable<any> {
         return this.http.delete(`${this.url}/players/${encodeURIComponent(id)}`, this.requestOptions);
+    }
 
+    getPlayerRank():Observable<any> {
+        return this.http.get(`${this.url}/attacks`, this.requestOptions);
     }
 
 

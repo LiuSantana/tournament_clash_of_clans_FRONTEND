@@ -96,7 +96,7 @@
         <div class="attacksList">
             <div class="team active" #teamA>
                 <div class="attack" *ngFor="let attack of this.attacks.clan">
-                    <div class="extra"><i class="fa-solid fa-star"></i></div>
+                    <div class="extra"><i class="fa-solid fa-star" *ngIf="attacks.attack_number == 2"></i></div>
                     <p name="name">{{attack.name}}</p>
 
                     <p name="stars" long-name="estrellas" short-name="☆" *ngIf="!this.admin">{{attack.stars}}</p>
@@ -108,11 +108,11 @@
             </div>
             <div class="team" #teamB>
                 <div class="attack" *ngFor="let attack of this.attacks.opponent">
-                    <div class="extra"></div>
+                    <div class="extra"><i class="fa-solid fa-star" *ngIf="attacks.attack_number == 2"></i></div>
                     <p name="name">{{attack.name}}</p>
 
-                    <p name="stars" *ngIf="!this.admin">1</p>
-                    <p name="percentage" *ngIf="!this.admin">89</p>
+                    <p name="stars" long-name="estrellas" short-name="☆" *ngIf="!this.admin">{{attack.stars}}</p>
+                    <p name="percentage" long-name="porcentaje" short-name="%" *ngIf="!this.admin">{{attack.percentage}}</p>
                     
                     <input type="text" name="stars" *ngIf="this.admin" [value]="attack.stars">
                     <input type="text" name="percentage" *ngIf="this.admin" [value]="attack.percentage">

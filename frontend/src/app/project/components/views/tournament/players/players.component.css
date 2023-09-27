@@ -1,0 +1,17 @@
+.table{min-height: 60vh; margin-bottom: 8rem;}
+.table > li
+{
+    width: calc(20px + 40px + 140px + 3 * 60px); 
+    margin: 0 auto;
+}
+.table > li > div
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table > li > .num { width: 60px; }
+.table > li > .img { height: 100%; aspect-ratio: 1/1; }
+.table > li > .img > img { height: 80%; width: auto; }
+.table > li > .short_num { width: 20px; }
+.table > li > .string { width: 140px; justify-content: flex-start; padding-left: 5px;}
