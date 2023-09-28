@@ -21,13 +21,15 @@ export class CalendarComponent implements OnInit {
   allMatches:any = [];
   attacks!:any;
 
+  modifiedAttacks:any = [];
+
 
   constructor(private AWar:AWar) {
     this.getWars();
     let token = localStorage.getItem('mirror-cup-token');
-    if(token){
+    if(token) {
       let clan:any = jwt_decode(token);
-      if(clan.clan == '#0000') this.admin = true;
+      if (clan.tag == '#0000') this.admin = true;
     }
   }
 
@@ -79,6 +81,19 @@ export class CalendarComponent implements OnInit {
       error.classList.remove('hide');
     }
     btn.classList.remove('loading');
+  }
+
+  modifyAttack(attack:any) {
+    let position = this.modifiedAttacks.indexOf(attack.id);
+    if(position != -1){
+      this.modifiedAttacks.splice(position, 1);
+    }
+    this.modifiedAttacks.push(attack);
+  }
+  saveAttacks(){
+    if(this.modifiedAttacks.length > 0) {
+      
+    }
   }
 
   setActive(groupBox:HTMLDivElement, group:HTMLDivElement){
