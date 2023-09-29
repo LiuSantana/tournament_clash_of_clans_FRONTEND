@@ -83,16 +83,55 @@ export class CalendarComponent implements OnInit {
     btn.classList.remove('loading');
   }
 
-  modifyAttack(attack:any) {
-    let position = this.modifiedAttacks.indexOf(attack.id);
-    if(position != -1){
-      this.modifiedAttacks.splice(position, 1);
+  modifyAttack(attack:any, rawValue:string, type:string) {
+    let value = parseInt(rawValue);
+    let attackInArray = this.modifiedAttacks.find((a:any) => a.war == attack.war && a.tag == attack.tag);
+    if(attackInArray){
+      if(type == 'stars') attackInArray.stars = value;
+      else attackInArray.percentage = value;
+    } else {
+      this.modifiedAttacks.push(
+        {
+          tag:attack.tag, clan:attack.clan, war:attack.war, 
+          stars:type=='stars' ? value : attack.stars,
+          percentage:type=='percentage' ? value : attack.percentage
+        }
+      );
     }
-    this.modifiedAttacks.push(attack);
   }
-  saveAttacks(){
+  async saveAttacks(btn:HTMLButtonElement){
     if(this.modifiedAttacks.length > 0) {
-      
+      btn.classList.add('loading');
+      await this.AWar.updateAttacks(this.modifiedAttacks).toPromise();
+      btn.classList.remove('loading');
+    }
+  }
+
+  async setDefaultWar(clanBox:HTMLDivElement, btn:HTMLButtonElement) {
+    btn.classList.add('loading');
+    let resultat;
+    let group = clanBox.querySelector('.active')?.getAttribute('name');
+    switch(group) {
+      case 'A':
+        resultat = [
+          {player: '#0000', clan:this.war.clan_A, id:this.war.id, stars:0, percentage:0, duration:0},
+          {player: '#0001', clan:this.war.clan_B, id:this.war.id, stars:11, percentage:400, duration:0}
+        ]
+        break;
+      case 'B':
+        resultat = [
+          {player: '#0001', clan:this.war.clan_A, id:this.war.id, stars:11, percentage:400, duration:0},
+          {player: '#0000', clan:this.war.clan_B, id:this.war.id, stars:0, percentage:0, duration:0}
+        ]
+        break;
+      default:
+        break;
+    }
+    await this.AWar.defaultWar(resultat).toPromise();
+    btn.classList.remove('loading');
+    if(resultat){
+      this.war.stars_A = resultat[1].stars;
+      this.war.stars_B = resultat[0].stars;
     }
   }
 

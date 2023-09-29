@@ -92,13 +92,13 @@
         <div class="defaultWarBackground hide" #defaultBox>
             <div class="defaultWarBox">
                 <div class="close" (click)="defaultBox.classList.add('hide')"><i class="fa-solid fa-xmark"></i></div>
-                <div class="clanSelector">
-                    <div class="clan active" #clanA 
+                <div class="clanSelector" #clanBox>
+                    <div class="clan active" name="A" #clanA 
                      (click)="winA.classList.remove('hide'); winB.classList.add('hide'); 
                      clanB.classList.remove('active');clanA.classList.add('active')">
                         {{this.war.clan_A_short_name}}
                     </div>
-                    <div class="clan" #clanB 
+                    <div class="clan" name="B" #clanB 
                      (click)="winB.classList.remove('hide'); winA.classList.add('hide'); 
                      clanB.classList.add('active');clanA.classList.remove('active')">
                         {{this.war.clan_B_short_name}}
@@ -106,7 +106,7 @@
                 </div>
                 <h3 name="result" #winA>11 - 0</h3>
                 <h3 name="result" class="hide" #winB>0 - 11</h3>
-                <button class="main_action_button">guardar</button>
+                <button class="main_action_button" #btnDefault (click)="setDefaultWar(clanBox, btnDefault); defaultBox.classList.add('hide')">guardar</button>
             </div>
         </div>
     
@@ -130,8 +130,8 @@
                     <p name="stars" long-name="estrellas" short-name="☆" *ngIf="!this.admin">{{attack.stars}}</p>
                     <p name="percentage" long-name="porcentaje" short-name="%" *ngIf="!this.admin">{{attack.percentage}}</p>
                     
-                    <input type="text" name="stars" *ngIf="this.admin" [value]="attack.stars" (change)="this.modifyAttack(attack)">
-                    <input type="text" name="percentage" *ngIf="this.admin" [value]="attack.percentage" (change)="this.modifyAttack(attack)">
+                    <input type="number" name="stars" *ngIf="this.admin" [value]="attack.stars" #stars (change)="this.modifyAttack(attack, stars.value, 'stars')">
+                    <input type="number" name="percentage" *ngIf="this.admin" [value]="attack.percentage" #percentage (change)="this.modifyAttack(attack, percentage.value, 'percentage')">
                 </div>
             </div>
             <div class="team" #teamB>
@@ -142,14 +142,14 @@
                     <p name="stars" long-name="estrellas" short-name="☆" *ngIf="!this.admin">{{attack.stars}}</p>
                     <p name="percentage" long-name="porcentaje" short-name="%" *ngIf="!this.admin">{{attack.percentage}}</p>
                     
-                    <input type="text" name="stars" *ngIf="this.admin" [value]="attack.stars">
-                    <input type="text" name="percentage" *ngIf="this.admin" [value]="attack.percentage">
+                    <input type="number" name="stars" *ngIf="this.admin" [value]="attack.stars" #stars (change)="this.modifyAttack(attack, stars.value, 'stars')">
+                    <input type="number" name="percentage" *ngIf="this.admin" [value]="attack.percentage" #percentage (change)="this.modifyAttack(attack, percentage.value, 'percentage')">
                 </div>
             </div>
         </div>
         <!-- *ngIf admin -->
         <div class="actionsBox" *ngIf="this.admin">
-            <button class="main_action_button" (click)="saveAttacks()">Guardar</button>
+            <button class="main_action_button" #btn_update_ATTK (click)="saveAttacks(btn_update_ATTK)">Guardar</button>
             <button class="delete_action_button">Sanción</button>
         </div>
 

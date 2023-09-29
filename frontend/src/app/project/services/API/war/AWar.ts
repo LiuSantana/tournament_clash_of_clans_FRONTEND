@@ -27,8 +27,18 @@ export class AWar {
     getEndedWar(id:string):Observable<any> {
         return this.http.get(`${this.url}/wars/${id}/results`, this.requestOptions);
     }
+
+
     endWar(id:string):Observable<any> {
         return this.http.post(`${this.url}/wars/${id}`, this.requestOptions);
+    }
+    defaultWar(wars:any):Observable<any> {
+        return this.http.post(`${this.url}/wars/default`, wars,  this.requestOptions);
+    }
+
+    
+    updateAttacks(attacks:any):Observable<any> {
+        return this.http.patch(`${this.url}/wars/attacks`, attacks,  this.requestOptions);
     }
 
 
