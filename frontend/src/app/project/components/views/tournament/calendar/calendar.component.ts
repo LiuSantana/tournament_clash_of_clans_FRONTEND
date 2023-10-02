@@ -48,10 +48,30 @@ export class CalendarComponent implements OnInit {
     this.matches = this.matches.filter((w:any) => w.tournament_group == this.group);
   }
 
+  async applySanction(clanBox_san:HTMLDivElement, stars:number, percentage:number, sanction_btn:HTMLButtonElement, sanctionBox:HTMLDivElement ) {
+    sanction_btn.classList.add('loading');
+    const tag = clanBox_san.querySelector('.active')?.getAttribute('tag');
+    let sanction = {tag, war:this.war.id, stars, percentage}
+    
+    try {
+      await this.AWar.applySanction(sanction).toPromise();
+      if(tag == this.war.clan_A) {
+        this.war.stars_A = this.war.stars_A - stars;
+        this.war.percentage_A = this.war.percentage_A - percentage;
+      } else {
+        this.war.stars_B = this.war.stars_B - stars;
+        this.war.percentage_B = this.war.percentage_B - percentage;
+      }
+    } catch (e) {}
+
+    sanction_btn.classList.remove('loading');
+    sanctionBox.classList.add('hide');
+  }
+
   async setWar(war:any) { 
     this.war = war;
 
-    try{
+    try {
       let attacks = await this.AWar.getWarAttacks(war.id).toPromise();
 
       let clan = attacks.data.filter((a:any) => a.clan == war.clan_A);
@@ -131,7 +151,10 @@ export class CalendarComponent implements OnInit {
     btn.classList.remove('loading');
     if(resultat){
       this.war.stars_A = resultat[1].stars;
+      this.war.percentage_A = resultat[1].percentage;
       this.war.stars_B = resultat[0].stars;
+      this.war.percentage_B = resultat[0].percentage;
+      this.war.state='finished';
     }
   }
 

@@ -141,9 +141,15 @@
     -->
     <div id="pageContent extra" *ngIf="this.pageState.preview">
         <div class="form first">
-            <div class="inputBox">
-                <p>Tag</p>
-                <p class="input noeditable" name="tag">{{clan.tag}}</p>
+            
+            <div class="input_inline">
+                <div class="inputBox">
+                    <p>Tag</p>
+                    <p class="input noeditable" name="tag">{{clan.tag}}</p>
+                </div>
+                <div class="clanLink">
+                    <a href="https://link.clashofclans.com/es?action=OpenClanProfile&tag={{clan.tag.substring(1)}}"><i class="fa-solid fa-link"></i></a>
+                </div>
             </div>
             <div class="input_inline">
                 <div class="inputBox">

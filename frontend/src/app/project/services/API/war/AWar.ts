@@ -35,11 +35,15 @@ export class AWar {
     defaultWar(wars:any):Observable<any> {
         return this.http.post(`${this.url}/wars/default`, wars,  this.requestOptions);
     }
+    applySanction(sanction:any):Observable<any> {
+        return this.http.post(`${this.url}/wars/sanction`, sanction,  this.requestOptions);
+    }
 
     
     updateAttacks(attacks:any):Observable<any> {
         return this.http.patch(`${this.url}/wars/attacks`, attacks,  this.requestOptions);
     }
+
 
 
     private createHeader() {

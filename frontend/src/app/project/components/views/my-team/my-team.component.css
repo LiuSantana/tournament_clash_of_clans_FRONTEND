@@ -74,6 +74,25 @@
     opacity: .3;
 }
 
+.clanLink
+{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+a
+{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: var(--color-border);
+    text-decoration: none;
+}
+a > i {pointer-events: none; color: #2d2d2d}
+
 /*************************
       LOADING STYLES
 **************************/

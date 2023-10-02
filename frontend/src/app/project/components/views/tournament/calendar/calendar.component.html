@@ -150,8 +150,36 @@
         <!-- *ngIf admin -->
         <div class="actionsBox" *ngIf="this.admin">
             <button class="main_action_button" #btn_update_ATTK (click)="saveAttacks(btn_update_ATTK)">Guardar</button>
-            <button class="delete_action_button">Sanción</button>
+            <button class="delete_action_button" (click)="sanctionBox.classList.remove('hide')">Sanción</button>
         </div>
 
     </section>
+    
+    <div class="defaultWarBackground hide" #sanctionBox>
+        <div class="defaultWarBox">
+            <div class="close" (click)="sanctionBox.classList.add('hide')"><i class="fa-solid fa-xmark"></i></div>
+            <div class="clanSelector" #clanBox_san>
+                <div class="clan active" [attr.tag]="this.war.clan_A" #clanA
+                 (click)="clanB.classList.remove('active');clanA.classList.add('active')">
+                    {{this.war.clan_A_short_name}}
+                </div>
+                <div class="clan" [attr.tag]="this.war.clan_B" #clanB 
+                 (click)="clanB.classList.add('active');clanA.classList.remove('active')">
+                    {{this.war.clan_B_short_name}}
+                </div>
+            </div>
+
+            <div class="sanction">
+                <div class="inputBox">
+                    <p>estrellas</p>
+                    <input type="number" name="stars" #stars value="0"/>
+                </div>
+                <div class="inputBox">
+                    <p>porcentaje</p>
+                    <input type="number" name="percentage" #percentage value="0"/>
+                </div>
+            </div>
+            <button class="main_action_button sanction_btn" #sanction_btn (click)="applySanction(clanBox_san, stars.valueAsNumber, percentage.valueAsNumber, sanction_btn, sanctionBox )">APLICAR</button>
+        </div>
+    </div>
 </ng-container>
