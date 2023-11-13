@@ -1,4 +1,5 @@
 
+
 <div class="braket" style="--width: 180px">
     <div class="round" *ngFor="let round of this.rounds">
         <div class="header">
@@ -6,14 +7,18 @@
         </div>
         <div class="war" *ngFor="let war of round.wars">
             <div class="team">
-                <p>???</p>
-                <p>0</p>
+                <p *ngIf="war.clan_A != '#0000'">{{war.clan_A}}</p>
+                <p *ngIf="war.clan_A == '#0000'">???</p>
+                <p>{{war.stars_A}}</p>
             </div>
             <div class="team">
-                <p>???</p>
-                <p>0</p>
+                <p *ngIf="war.clan_B != '#0000'">{{war.clan_B}}</p>
+                <p *ngIf="war.clan_B == '#0000'">???</p>
+                <p>{{war.stars_B}}</p>
             </div>
         </div>
     </div>
 </div>
+
+
 
