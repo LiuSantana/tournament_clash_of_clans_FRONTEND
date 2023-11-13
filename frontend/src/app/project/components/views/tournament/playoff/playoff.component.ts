@@ -19,8 +19,11 @@ export class PlayoffComponent implements OnInit, AfterViewInit {
     wars = wars.filter((w:any) => w.format == 'playoff');
     this.setRounds(wars);
     
-    this.setGridColumns();
-    this.setBraketMargins(1, 10, 10);
+    setTimeout(() => {
+      this.setGridColumns();
+      this.setBraketMargins(1, 10, 10);
+
+    },500)
   }
   setRounds(warList:any) {
     let roundNumber = Array.from(new Set(warList.map((w:any) => w['round'].split('-')[0]))).length;
